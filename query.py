@@ -69,8 +69,8 @@ def run_query(db: list[dict], query: dict) -> dict:
 
         if key in {"price", "min_price"}:
             if (isinstance(value, bool)
-                    or not isinstance(value, (int, float))
-                    or not math.isfinite(value)):
+                or not isinstance(value, (int, float))
+                or (isinstance(value, float) and not math.isfinite(value))):
                 return {
                     "query": query,
                     "error": "INVALID_QUERY",
@@ -84,8 +84,6 @@ def run_query(db: list[dict], query: dict) -> dict:
                     "error": "INVALID_QUERY",
                     "matches": []
                 }
-
-        if key == "order":
             
             if not isinstance(value, str) or value not in {"asc", "desc"}:
                 return {
@@ -156,4 +154,14 @@ def run_query(db: list[dict], query: dict) -> dict:
 
 def run_queries(db: list[dict], queries: dict | list) -> list[dict]:
     """Accept one query object or a list of them; always return a list."""
-    raise NotImplementedError
+    if isinstance(queries, dict):
+        queries = [queries]
+    elif not isinstance(queries, list):
+        queries = [queries]
+
+    results = []
+
+    for query in queries:
+        results.append(run_query(db, query))
+
+    return results
