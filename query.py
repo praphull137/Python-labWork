@@ -1,3 +1,4 @@
+
 """Running queries against the flight database."""
 from datetime import datetime
 import math
@@ -84,7 +85,8 @@ def run_query(db: list[dict], query: dict) -> dict:
                     "error": "INVALID_QUERY",
                     "matches": []
                 }
-            
+
+        if key == "order":
             if not isinstance(value, str) or value not in {"asc", "desc"}:
                 return {
                     "query": query,
