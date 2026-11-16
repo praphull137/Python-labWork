@@ -20,7 +20,6 @@ STUDENT_ID = "251ADB002"
 FIRST_NAME = "Praphull"
 LAST_NAME = "KumarPandey"
 
-
 def main(argv: list[str] | None = None) -> int:
     """Run the whole program and return the exit code (0, 1 or 2).
 
