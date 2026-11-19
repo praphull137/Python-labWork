@@ -10,7 +10,6 @@ import json
 import logging
 from datetime import datetime
 from pathlib import Path
-
 from validator import load_airports
 from csv_loader import parse_files
 from query import run_queries
@@ -22,13 +21,13 @@ LAST_NAME = "KumarPandey"
 
 def main(argv: list[str] | None = None) -> int:
     """Run the whole program and return the exit code (0, 1 or 2).
-
+    
     argv is the argument list without the program name.
     None means use sys.argv[1:] (argparse does this for you).
     Do not call sys.exit() inside main(); return the code instead.
     """
     parser = argparse.ArgumentParser()
-
+    
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("-i", metavar="FILE")
     source.add_argument("-d", metavar="FOLDER")
@@ -52,7 +51,7 @@ def main(argv: list[str] | None = None) -> int:
     logger.setLevel(logging.INFO)
 
     handler = None
-
+    
     try:
         if args.i:
             csv_paths = [args.i]
@@ -137,7 +136,7 @@ def main(argv: list[str] | None = None) -> int:
                 json.dump(responses, file, indent=4)
 
         return 0
-
+    
     except (OSError, json.JSONDecodeError, UnicodeDecodeError, ValueError) as error:
         print(f"Error: {error}", file=sys.stderr)
         return 1
