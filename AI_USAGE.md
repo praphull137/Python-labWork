@@ -15,7 +15,6 @@ Tool and version: ChatGPT (OpenAI), GPT-6
 
 - Link 1: https://chatgpt.com/g/g-p-6af897787fb88191a41ee7a8dbef1a2b-python-lab-help/c/6af8a7cc-0ddc-83ed-a202-b9a8bbffbea8
 
-- Link 2:
 
 ## What I used them for
 
@@ -73,7 +72,7 @@ explain the requirement
 7.Why are we checking whether the query is a dictionary at the beginning? What happens if we don't check it? and If a query contains multiple conditions, like origin, destination and price, are we checking all conditions one by one for every flight?
 ## What I changed or verified myself
 
-I wrote the code myself based on the assignment requirements.
+I wrote the code myself.
 
 I implemented the logic for the functions myself.
 
